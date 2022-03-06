@@ -15,7 +15,7 @@ jobs:
     
       - name: Zips files in the repository as myarchive
         run: grep example ${{github.workspace}} | zip myarchive.zip
-        working-directory: mugdhav/dummymaps-api-for-javascript-examples
+        working-directory: ../mugdhav/dummymaps-api-for-javascript-examples
         
       - name: Create manifest file
         run: touch MANIFEST.mf
