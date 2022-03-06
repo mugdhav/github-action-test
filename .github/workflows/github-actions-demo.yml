@@ -14,6 +14,8 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Zips files in the repository as myarchive
         run: zip myarchive.zip ${{ github.workspace }}
+      - name: Create manifest file
+        run: touch MANIFEST.mf
       - name: Adds manifest file to myarchive
-        run: zip -rv myarchive.zip manifest.txt
+        run: zip -rv myarchive.zip MANIFEST.mf
       - run: echo "🍏 This job's status is ${{ job.status }}."
