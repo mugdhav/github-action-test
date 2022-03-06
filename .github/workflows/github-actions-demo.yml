@@ -16,8 +16,8 @@ jobs:
       - name: Zips files in the repository as myarchive
         shell: bash
         run: |
-          value = ls -l ${{github.workspace}} | grep "example"
-          zip myarchive.zip $value
+          ls -l ${{github.workspace}} | grep "example" > search-result.txt
+          zip myarchive.zip search-result.txt
         
       - name: Create manifest file
         run: touch MANIFEST.mf
