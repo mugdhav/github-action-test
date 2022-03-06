@@ -15,4 +15,6 @@ jobs:
       - name: Zips files in the repository as myarchive
         run: zip myarchive.zip ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      
+      - name: Adds manifest file to myarchive.zip
+        run: zip -r myarchive.zip MANIFEST.mf
+      - run: echo "🍏 This job's status is ${{ job.status }}."
