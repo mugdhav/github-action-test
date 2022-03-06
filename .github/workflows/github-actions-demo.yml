@@ -14,7 +14,7 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
     
       - name: Zips files in the repository as myarchive
-        run: grep example ${{github.workspace}} | zip myarchive.zip
+        run: ls -l ${{github.workspace}} | grep "example"  | zip myarchive.zip
         
       - name: Create manifest file
         run: touch MANIFEST.mf
