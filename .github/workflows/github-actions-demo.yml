@@ -4,19 +4,19 @@ jobs:
   Assignment-GitHub-Actions:   
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v2
         
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "The workflow is now ready to test your code on the runner."
       
-      - name: Clone example directory to own repository in the workflow directory
+      - name: Clone remote example repository to own repository containing the github workflow
         run: git clone https://github.com/heremaps/maps-api-for-javascript-examples ${{ github.repository }}
     
-      - name: Changes to example directory, creates MANIFEST.mf file from the directory listing excluding fonts folder, zips files in the directory as example_archive.zip exluding fonts folder
+      - name: Zip all files in the repository into an example_archive file, excluding the workflow as well as fonts directories. Then create a MANIFEST.mf file from the example_archive contents.
         shell: bash
         run: |         
           zip example_archive ${{github.repository}} -x \.github/workflows/* \fonts/* 
