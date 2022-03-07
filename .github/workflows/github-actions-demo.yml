@@ -14,13 +14,12 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       
       - name: Clone example directory to own repository in the workflow directory
-        run: git clone https://github.com/heremaps/maps-api-for-javascript-examples ${{ github.repository }}/maps-api-for-javascript-examples
+        run: git clone https://github.com/heremaps/maps-api-for-javascript-examples ${{ github.repository }}
     
       - name: Changes to example directory, creates MANIFEST.mf file from the directory listing excluding fonts folder, zips files in the directory as example_archive.zip exluding fonts folder
         shell: bash
-        run: |
-          cd ../maps-api-for-javascript-examples
-          zip example_archive ${{github.workspace}} -x \fonts/*
+        run: |         
+          zip example_archive ${{github.workspace}} -x \.github/workflows/* \fonts/* 
           zip -sf example_archive > MANIFEST.mf
         
       - run: echo "🍏 This job's status is ${{ job.status }}."
