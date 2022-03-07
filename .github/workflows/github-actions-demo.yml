@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: GitHub Actions Assignment
 on: [push]
 jobs:
   Assignment-GitHub-Actions:   
