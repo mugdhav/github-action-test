@@ -16,11 +16,10 @@ jobs:
       - name: Zips files in the repository as myarchive
         shell: bash
         run: |
+          cd ../github-action-test
           ls -l ${{github.workspace}} | grep "example" > MANIFEST.mf
-          
+          zip -x "/fonts/*" example_archive.zip
         
-      - name: Create zip file from folder contents, excluding the Fonts folder
-        run: zip -x "/Fonts/*" example_archive.zip
       - name: Adds manifest file to myarchive
         run: zip -rv example_archive MANIFEST.mf
       - run: echo "🍏 This job's status is ${{ job.status }}."
