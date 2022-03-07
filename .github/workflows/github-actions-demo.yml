@@ -15,9 +15,7 @@ jobs:
     
       - name: Changes to example directory, creates MANIFEST.mf file from the directory listing excluding fonts folder, zips files in the directory as example_archive.zip exluding fonts folder
         shell: bash
-        run: |
-          cd ../github-action-test
-          ls -R ${{github.workspace}} --ignore="*fonts/*" > MANIFEST.mf
+        run: |         
           zip example_archive ${{github.workspace}} -x \fonts/*
           zip -sf example_archive > MANIFEST.mf
         
