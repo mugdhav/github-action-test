@@ -20,7 +20,6 @@ jobs:
         shell: bash
         run: |         
           zip example_archive ${{github.repository}} -x \.github/workflows/* \fonts/* 
-          zip -sf example_archive > MANIFEST.mf
-          zip -r example_archive -i MANIFEST.mf 
-        
+          zip -sf example_archive > MANIFEST.mf | zip -r example_archive . -i MANIFEST.mf
+                
       - run: echo "🍏 This job's status is ${{ job.status }}."
