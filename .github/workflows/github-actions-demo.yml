@@ -18,7 +18,7 @@ jobs:
         run: |
           cd ../github-action-test
           ls -R ${{github.workspace}} --ignore="*fonts/*" > MANIFEST.mf
-          zip example_archive.zip ${{github.workspace}} -x fonts/*
-          zip -rv example_archive MANIFEST.mf
+          zip example_archive ${{github.workspace}} -x \fonts/*
+          zip -sf example_archive > MANIFEST.mf
         
       - run: echo "🍏 This job's status is ${{ job.status }}."
