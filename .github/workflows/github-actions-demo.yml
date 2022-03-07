@@ -17,7 +17,7 @@ jobs:
         shell: bash
         run: |
           cd ../github-action-test
-          ls -R ${{github.workspace}} -ignore="*fonts/*" > MANIFEST.mf
+          ls -R ${{github.workspace}} --ignore"*fonts/*" > MANIFEST.mf
           zip example_archive.zip ${{github.workspace}} -x fonts/*
         
       - name: Adds manifest file to myarchive
