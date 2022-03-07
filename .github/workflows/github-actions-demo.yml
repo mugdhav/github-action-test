@@ -13,13 +13,12 @@ jobs:
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
     
-      - name: Zips files in the repository as myarchive
+      - name: Changes to example directory, creates MANIFEST.mf file from the directory listing excluding fonts folder, zips files in the directory as example_archive.zip exluding fonts folder
         shell: bash
         run: |
           cd ../github-action-test
           ls -R ${{github.workspace}} --ignore="*fonts/*" > MANIFEST.mf
           zip example_archive.zip ${{github.workspace}} -x fonts/*
+          zip -rv example_archive MANIFEST.mf
         
-      - name: Adds manifest file to myarchive
-        run: zip -rv example_archive MANIFEST.mf
       - run: echo "🍏 This job's status is ${{ job.status }}."
